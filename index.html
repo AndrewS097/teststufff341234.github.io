@@ -1,1 +1,532 @@
-<b>test</b>
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Andrew Salazar — Cybersecurity, hacking, and gaming enthusiast.">
+    <title>Andrew Salazar | Cybersecurity & Gaming</title>
+
+    <style>
+        :root {
+            --bg: #070b12;
+            --bg-light: #0d1420;
+            --card: rgba(15, 24, 37, 0.75);
+            --text: #e8f0f7;
+            --muted: #8fa3b8;
+            --cyan: #00f5d4;
+            --blue: #00a8ff;
+            --border: rgba(0, 245, 212, 0.18);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background:
+                radial-gradient(circle at 80% 10%, rgba(0, 168, 255, 0.12), transparent 30%),
+                radial-gradient(circle at 10% 40%, rgba(0, 245, 212, 0.08), transparent 25%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(7, 11, 18, 0.78);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--cyan);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--muted);
+            font-size: 0.92rem;
+            transition: 0.25s;
+        }
+
+        nav a:hover {
+            color: var(--cyan);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 7% 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .terminal-label {
+            color: var(--cyan);
+            font-family: monospace;
+            margin-bottom: 18px;
+            font-size: 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.2rem, 9vw, 7rem);
+            line-height: 0.95;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: var(--cyan);
+            text-shadow: 0 0 30px rgba(0,245,212,0.25);
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: var(--muted);
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 22px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: 0.25s;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: var(--cyan);
+            color: #03100e;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,245,212,0.18);
+        }
+
+        .btn-secondary {
+            color: var(--text);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        /* Decorative grid */
+        .grid {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            opacity: 0.16;
+            background-image:
+                linear-gradient(rgba(0,245,212,0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,245,212,0.12) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: linear-gradient(to bottom, black, transparent);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-heading {
+            margin-bottom: 45px;
+        }
+
+        .eyebrow {
+            color: var(--cyan);
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 3px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.3rem);
+            letter-spacing: -1px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            margin-top: 10px;
+            max-width: 650px;
+        }
+
+        /* About */
+        .about {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--muted);
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+        }
+
+        .terminal {
+            background: #03070c;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+        }
+
+        .terminal-bar {
+            padding: 12px 15px;
+            background: #0c131d;
+            display: flex;
+            gap: 7px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ff5f56;
+        }
+
+        .dot:nth-child(2) { background: #ffbd2e; }
+        .dot:nth-child(3) { background: #27c93f; }
+
+        .terminal-body {
+            padding: 25px;
+            font-family: monospace;
+            color: #a7ffeb;
+            font-size: 0.9rem;
+        }
+
+        .terminal-body .blue {
+            color: #66c7ff;
+        }
+
+        /* Interests */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(12px);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: var(--border);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        /* Skills */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            padding: 10px 16px;
+            border: 1px solid rgba(0,245,212,0.18);
+            background: rgba(0,245,212,0.04);
+            border-radius: 999px;
+            color: #bdeee8;
+            font-size: 0.9rem;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .contact p {
+            color: var(--muted);
+            margin: 15px auto 30px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 7%;
+            color: #65778b;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            nav ul {
+                display: none;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            section {
+                padding: 75px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#" class="logo">ANDREW<span>.DEV</span></a>
+
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#interests">Interests</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="grid"></div>
+
+            <div class="hero-content">
+                <div class="terminal-label">&gt; initializing portfolio...</div>
+
+                <h1>
+                    Andrew<br>
+                    <span>Salazar</span>
+                </h1>
+
+                <p>
+                    Cybersecurity enthusiast, technology explorer, and gamer.
+                    I'm interested in understanding how systems work,
+                    finding vulnerabilities, and building my technical skills.
+                </p>
+
+                <div class="buttons">
+                    <a href="#about" class="btn btn-primary">Explore My Profile</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="section-heading">
+                <div class="eyebrow">01 — About</div>
+                <h2>Curious by nature.</h2>
+            </div>
+
+            <div class="about">
+                <div class="about-text">
+                    <p>
+                        Hey, I'm <strong>Andrew Salazar</strong>. I'm passionate
+                        about technology, cybersecurity, hacking, and video games.
+                    </p>
+
+                    <p>
+                        I enjoy learning how computers, networks, and software
+                        work under the hood. Cybersecurity especially interests
+                        me because it combines problem-solving, creativity,
+                        and constantly evolving technology.
+                    </p>
+
+                    <p>
+                        When I'm not exploring technology, you'll probably find
+                        me playing video games or discovering something new.
+                    </p>
+                </div>
+
+                <div class="terminal">
+                    <div class="terminal-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+
+                    <div class="terminal-body">
+                        <p><span class="blue">andrew@portfolio</span>:~$ whoami</p>
+                        <p>Andrew Salazar</p>
+                        <br>
+                        <p><span class="blue">andrew@portfolio</span>:~$ interests</p>
+                        <p>[ cybersecurity, hacking, gaming ]</p>
+                        <br>
+                        <p><span class="blue">andrew@portfolio</span>:~$ status</p>
+                        <p>learning_mode = <strong>true</strong></p>
+                        <p>curiosity = <strong>∞</strong></p>
+                        <br>
+                        <p><span class="blue">andrew@portfolio</span>:~$ _</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERESTS -->
+        <section id="interests">
+            <div class="section-heading">
+                <div class="eyebrow">02 — Interests</div>
+                <h2>What I'm into.</h2>
+                <p>
+                    Three areas that keep me curious and motivated.
+                </p>
+            </div>
+
+            <div class="cards">
+
+                <article class="card">
+                    <div class="icon">🛡️</div>
+                    <h3>Cybersecurity</h3>
+                    <p>
+                        Learning about network security, defensive security,
+                        vulnerabilities, authentication, privacy, and
+                        responsible security practices.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="icon">💻</div>
+                    <h3>Hacking</h3>
+                    <p>
+                        Exploring ethical hacking and security research to
+                        understand how systems can be tested, protected,
+                        and improved.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="icon">🎮</div>
+                    <h3>Video Games</h3>
+                    <p>
+                        Gaming is one of my favorite ways to relax, compete,
+                        explore new worlds, and experience creative technology.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <div class="section-heading">
+                <div class="eyebrow">03 — Learning</div>
+                <h2>Things I'm exploring.</h2>
+            </div>
+
+            <div class="skills">
+                <span class="skill">Cybersecurity</span>
+                <span class="skill">Ethical Hacking</span>
+                <span class="skill">Networking</span>
+                <span class="skill">Linux</span>
+                <span class="skill">Programming</span>
+                <span class="skill">Web Security</span>
+                <span class="skill">CTFs</span>
+                <span class="skill">Computer Systems</span>
+                <span class="skill">Gaming</span>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="contact">
+                <div class="eyebrow">04 — Contact</div>
+                <h2>Let's connect.</h2>
+
+                <p>
+                    Interested in technology, cybersecurity, or gaming?
+                    Feel free to reach out.
+                </p>
+
+                <!-- Replace the email address below with your real email -->
+                <a
+                    href="mailto:your@email.com"
+                    class="btn btn-primary"
+                >
+                    Send Me an Email
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        © 2026 Andrew Salazar · Built with HTML & CSS
+    </footer>
+
+</body>
+</html>
+```
